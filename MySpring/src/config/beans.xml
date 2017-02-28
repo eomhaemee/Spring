@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+<!-- bean 으로 등록하는 설정 -->
+<bean id="stringPrinter" class="ehmspring.di.xml.StringPrinter"></bean>
+<bean id="consoleprinter" class="ehmspring.di.xml.ConsolePrinter"></bean>
+<bean id="hello" class="ehmspring.di.xml.Hello">
+	<property name="name" value="EHM"></property>
+	<property name="printer" ref="stringPrinter"></property>
+	<property name="names" >
+		<list>
+			<value>내이름은</value>
+			<value>엄혜미입니다.</value>
+		</list>
+	</property>
+</bean>
+
+
+
+</beans>
