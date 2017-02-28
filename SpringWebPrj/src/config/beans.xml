@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+	<!-- AOP설정 시작 -->
+	<!-- Advice 클래스를 Bean으로 등록 advice 등록 -->
+	<bean id="performanceTraceAdvice" class="myspring.aop.xml.PerformanceTraceAdvice" />
+	<!-- AOP 설정 aspect = advice(위에 있음 ref로 연결) + pointcut 써주고 ,유형(around),메서드명(trace)도 
+		써줌, user패키지아래있는게 실행시 수행됨 -->
+	<aop:config>
+		<aop:aspect id="traceAspect" ref="performanceTraceAdvice">
+			<aop:around pointcut="execution(public * myspring.user..*(..))"
+				method="trace" />
+		</aop:aspect>
+	</aop:config>
+	<!-- Annotation을 사용하여,@Aspect로 선언된 Advice를 실행해주는 설정 -->
+	<aop:aspectj-autoproxy />
+	<!-- AOP설정 끝 -->
+
+	<!-- MyBatis-Spring 설정 -->
+	<!-- SqlSessionTemplate 설정 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+
+	<!-- SqlSessionFactoryBean(SqlSessionFactory를 생성)설정 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:config/SqlMapConfig.xml" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:config/User.xml</value>
+				<value>classpath:config/Student.xml</value>
+
+			</list>
+		</property>
+	</bean>
+
+	<!-- apache dbcp 설정 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="${db.driverClass}" />
+		<property name="url" value="${db.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
+		<property name="initialSize" value="10" />
+		<property name="maxTotal" value="25" />
+
+	</bean>
+
+	<!-- DataSource설정 -->
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource" 
+		p:driverClass="${db.driverClass}" p:url="${db.url}" p:username="${db.username}" 
+		p:password="${db.password}" /> -->
+
+
+
+	<!-- properties file정보를 알려주는 설정 -->
+	<context:property-placeholder location="classpath:config/value.properties" />
+
+	<!-- annotation이 선언된 bean을 자동스캔하는설정 -->
+	<context:component-scan base-package="myspring" />
+	<!-- <context:component-scan base-package="myspring.di.annot" /> <context:component-scan 
+		base-package="myspring.user" /> -->
+
+	<!-- bean 으로 등록하는 설정 -->
+	<bean id="stringPrinter" class="myspring.di.xml.StringPrinter" />
+	<bean id="consolePrinter" class="myspring.di.xml.ConsolePrinter" />
+	<!-- bean으로 등록도 하고, 의존관계도 설정 1. setter injection set을 뺀다음을 properry name에 
+		써주면됨 -->
+	<bean id="hello" class="myspring.di.xml.Hello">
+		<property name="name" value="홍길동" />
+		<property name="printer" ref="stringPrinter" />
+		<property name="names">
+			<list>
+				<value>혜미</value>
+				<value>승혁</value>
+				<value>혜미와승혁</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 의존관계도 설정 2. constructor injection -->
+	<bean id="helloC" class="myspring.di.xml.Hello">
+		<constructor-arg index="0" value="둘리" />
+		<constructor-arg index="1" ref="consolePrinter" />
+	</bean>
+
+
+</beans>
