@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+.singIn {
+	
+	width: 150px;
+	margin-left: 3px;
+	padding:2px;
+ 	display: inline-block; 
+	border: 2px solid #DDDDDD;	
+}
+
+
+.singIn > form >input[type=submit]{
+	
+	width: 50px;
+	margin-left: 95px;
+	/* background-color: #80FF86; */
+}

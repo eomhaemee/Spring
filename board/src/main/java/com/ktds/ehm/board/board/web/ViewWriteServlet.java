@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class WriteServlet extends HttpServlet {
+public class ViewWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public WriteServlet() {
+    public ViewWriteServlet() {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

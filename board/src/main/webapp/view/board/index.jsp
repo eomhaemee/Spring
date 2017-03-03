@@ -3,7 +3,9 @@
  <%@ page import = "com.ktds.ehm.board.board.biz.BoardBiz,
 		    		com.ktds.ehm.board.board.biz.BoardBizImpl,
 		    		com.ktds.ehm.board.board.vo.BoardVO,
-		    		java.util.ArrayList, java.util.List" %>
+		    		java.util.ArrayList, java.util.List,
+		    		com.ktds.ehm.board.board.vo.BoardSearchVO,
+		    		com.ktds.ehm.common.web.pager.*"  %>
 <!DOCTYPE >
 <html>
 <head>
@@ -12,8 +14,17 @@
 </head>
 <body>
  <%
+
+ 
 	  BoardBiz  boardBiz = new BoardBizImpl();
-	  List<BoardVO> boardList = boardBiz.getAllArticles();
+	  String pageNo= request.getParameter("pageNo");
+		Pager pager = PagerFactory.getPager(Pager.ORACLE);
+		pager.setPageNumber(pageNo);
+		
+		BoardSearchVO searchVO = new BoardSearchVO();
+		
+	  searchVO.setPager(pager);
+	  List<BoardVO> boardList = boardBiz.getAllArticles(searchVO);
  %>
  
  <table>

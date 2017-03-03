@@ -1,0 +1,43 @@
+@CHARSET "UTF-8";
+
+.detail {
+	
+	width: 709px;
+	margin: 0 auto;
+	/* inline-block:한줄을 다 먹지 않고 content만큼만 먹는 block으로 변경됨 */
+	display: inline-block;
+	/* border : 1px solid : 실선
+	border : 1px dotted : 점선1
+	border : 1px dashed : 점선1 */
+	border: 1px solid #DDDDDD;
+}
+.detail > h1 {
+	text-align: center;
+}
+.detail > hr {
+	border: 1px dashed #DDD;
+	width: 589px;
+}
+/* .detail > .author,p {  <= 이렇게 적으면 .detail > .author 와P 태그로 분리적용됨*/
+.detail > .author,.detail > p, .detail > .controls {
+	margin: 0 auto;
+	width: 579px;
+	padding-left:10px;
+	
+}
+
+.detail > p {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-top:10px;
+	background-color: #F4F4F4;	
+}
+
+.detail > .controls {
+	padding-bottom: 10px;
+}
+
+
+
+
+

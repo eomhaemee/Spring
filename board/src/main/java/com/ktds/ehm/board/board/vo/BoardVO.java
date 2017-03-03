@@ -21,12 +21,21 @@ public class BoardVO {
     private String writeDate;
     @Types
     private String ip;
+    @Types
+    private int rnum;
+
     
     private UsersVO user;
 
-    
-    
-    public UsersVO getUser() {
+	public int getRnum() {
+		return rnum;
+	}
+
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
+
+	public UsersVO getUser() {
     	if( user == null) {
     		user = new UsersVO();
     	}

@@ -11,12 +11,12 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>ListServlet</display-name>
-    <servlet-name>ListServlet</servlet-name>
-    <servlet-class>com.ktds.ehm.board.board.web.ListServlet</servlet-class>
+    <display-name>ViewListServlet</display-name>
+    <servlet-name>ViewListServlet</servlet-name>
+    <servlet-class>com.ktds.ehm.board.board.web.ViewListServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ListServlet</servlet-name>
+    <servlet-name>ViewListServlet</servlet-name>
     <url-pattern>/list</url-pattern>
   </servlet-mapping>
   <servlet>
@@ -41,12 +41,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>WriteServlet</display-name>
-    <servlet-name>WriteServlet</servlet-name>
-    <servlet-class>com.ktds.ehm.board.board.web.WriteServlet</servlet-class>
+    <display-name>ViewWriteServlet</display-name>
+    <servlet-name>ViewWriteServlet</servlet-name>
+    <servlet-class>com.ktds.ehm.board.board.web.ViewWriteServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>WriteServlet</servlet-name>
+    <servlet-name>ViewWriteServlet</servlet-name>
     <url-pattern>/write</url-pattern>
   </servlet-mapping>
   <servlet>
@@ -148,16 +148,6 @@
     <servlet-name>ViewSignInServlet</servlet-name>
     <url-pattern>/user/login</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>IndexServlet</display-name>
-    <servlet-name>IndexServlet</servlet-name>
-    <servlet-class>com.ktds.ehm.board.IndexServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>IndexServlet</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
   <filter>
     <display-name>LoginSessionCheckFilter</display-name>
     <filter-name>LoginSessionCheckFilter</filter-name>
@@ -170,8 +160,18 @@
     <url-pattern>/detail</url-pattern>
     <url-pattern>/delete</url-pattern>
     <url-pattern>/update</url-pattern>
-     <url-pattern>/dowrite</url-pattern>
+    <url-pattern>/dowrite</url-pattern>
     <url-pattern>/dodelete</url-pattern>
     <url-pattern>/doupdate</url-pattern>
   </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoSignOutActionServlet</display-name>
+    <servlet-name>DoSignOutActionServlet</servlet-name>
+    <servlet-class>com.ktds.ehm.board.user.web.DoSignOutActionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoSignOutActionServlet</servlet-name>
+    <url-pattern>/user/logout</url-pattern>
+  </servlet-mapping>
 </web-app>

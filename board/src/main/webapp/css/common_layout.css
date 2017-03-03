@@ -1,0 +1,55 @@
+@CHARSET "UTF-8";
+/* 모든element에 적용하고 싶으면 '*'  */
+* {
+	color:#333333;
+}
+/* 전체 text는 9pt로 하겠음 */
+div,input,td,th,span,a,p,textarea,li,button,dt,dl,dd,ul,ol,body{
+	font-size: 9pt;
+}
+#wrapper {
+	width: 964px;
+	/*hidden: 964를 넘어가면 짤라버리는기능 */
+	overflow: hidden;
+	/* 0:위아래는 붙이고 auto: 양옆에는 남아있는 빈공간을 양사이드로 갈라서 내용을 그안에 위치시킴  */
+	margin: 0 auto;
+}
+#content {
+	/* wrapper를 100% 채움 */
+	width: 100%
+}
+#nav {
+	width: 100%;
+	background-color: #55CC55;
+	padding: 10px;
+	padding-left: 15px;
+	margin-bottom: 3px;
+	font-size: 9pt;
+}
+/* nav 아래 자식인 a에만 적용 */
+#nav > a {
+	color: #EEFF00;
+	font-weight: bold;
+	font-size: 11pt;
+}
+body {
+	margin: 0px;
+}
+table {
+	/* collapse:테이블 사이 경계선이 사라짐 */
+	border-collapse: collapse;
+	width: 100%;
+}
+th {
+	text-align: center;
+	font-weight: bold;
+	background-color: powderblue;
+	
+	font-size: 9pt;
+	padding: 10px;
+	
+}
+td {
+	font-size: 9pt;
+	padding: 6px;
+}

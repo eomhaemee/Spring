@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+
+.grid, .login {
+	/* border : 1px solid : 실선
+	border : 1px dotted : 점선1
+	border : 1px dashed : 점선1 */
+	border: 1px solid #DDDDDD;
+	
+}
+.grid {
+	
+	 width: 709px;
+	 /* width: 70px; */
+	margin-right: 3px;
+	/* inline-block:한줄을 다 먹지 않고 content만큼만 먹는 block으로 변경됨 */
+	display: inline-block;
+	
+}
+.login {
+	
+	vertical-align:top;
+	width: 242px;
+	padding: 3px;
+	display: inline-block;
+}
